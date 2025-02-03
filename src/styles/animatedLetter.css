@@ -1,0 +1,28 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap');
+
+        .animated-letter{
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            transform-origin: center center;
+            cursor: var(--cursor-pointer);
+            translate: none;
+            rotate: none;
+            scale: none;
+            transform: translate3d(0px, 0px, 0px) rotate(1.2491deg) scale(1.1521, 1.1521);
+            opacity: 1;
+            z-index: 3;
+            line-height: 0.9;
+            transition: transform 0.25s ease, color 0.25s ease, font-variation-settings 0.25s ease;
+            font-family: 'Recursive', sans-serif;
+            font-size: 2em;
+            font-variation-settings: 'wght' 800;
+            margin: none;
+        }
+
+        .animated-letter:hover{
+            cursor: pointer;
+            transform: translate3d(0px, 0px, 0px) rotate(-0.445deg) scale(1.2014, 1.2014);
+            font-variation-settings: "wght" 354.078;
+        }

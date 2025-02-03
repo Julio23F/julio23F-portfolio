@@ -1,0 +1,14 @@
+
+.home-container h1 {
+
+}
+
+.home-container > h1 > div:first-child {
+    color: #ff7145 !important;
+}
+
+.home-container > h1 > div:nth-child(2) {
+    color: white !important;
+}
+
+
