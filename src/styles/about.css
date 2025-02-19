@@ -1,0 +1,126 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr; 
+  grid-template-rows: repeat(2, auto); 
+  gap: 50px 0px; 
+  width: 100%;
+}
+
+.grid-item {
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  text-align: start;
+}
+
+.about-container {
+  margin-top: 150px;
+  padding: 100px 20px;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  font-family: sans-serif;
+  color: #f8f7f4;
+}
+
+.about {
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+
+/* Titre */
+.about-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  letter-spacing: 3px;
+}
+
+/* Conteneur des stats */
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  gap: 15px;
+}
+
+/* Éléments des stats */
+.stat-item {
+  width: 200px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), 
+  linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.15)
+  );
+  backdrop-filter: blur(8rem);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.stat-item > div {
+  height: 150px;
+  position: relative;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+
+.stat-number {
+  font-size: 5rem;
+  margin-top: -35px; 
+}
+
+.stat-number span:nth-child(2){
+  font-size: 0.7em;
+}
+
+.stat-text {
+  color: #b0b0b0;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  align-self: flex-end; 
+  text-align: right; 
+  width: 100%;
+}
+
+.stat-text span{
+  display: block;
+}
+
+.about-description {
+  color: #d0d0d0;
+  margin-top: 50px;
+  max-width: 600px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.about-name {
+  color: white;
+  font-weight: 600;
+}
+
+
+.description-title{
+  font-size: 0.8em;
+  color: #f8f7f499;
+}
+.description-text{
+  font-size:  0.9em;
+  color: #f8f7f4;
+  text-indent: 2em;
+  text-align: justify;
+}
+.description-stats {
+  width: 60%;
+}
