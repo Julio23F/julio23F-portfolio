@@ -1,7 +1,10 @@
 
-.home-container h1 {
-
+.home-container {
+  background: black;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 3px 3px;
 }
+
 
 .home-container > h1 > div:first-child {
     color: #ff7145 !important;

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const AnimatedLetter = ({ item }) => {
-  const [hoverColor, setHoverColor] = useState('');
-  const [rotation, setRotation] = useState('');
+const AnimatedLetter = ({ item, index, activeIndex }) => {
+  const [styles, setStyles] = useState({});
+  const isActive = index === activeIndex;
 
-  // Liste des 4 couleurs possibles
+  // Liste des couleurs possibles
   const colors = [
     '#FFB6C1', // Rose pâle
     '#FF9A8B', // Orange clair
@@ -25,24 +25,44 @@ const AnimatedLetter = ({ item }) => {
     return rotations[Math.floor(Math.random() * rotations.length)];
   };
 
+  const getRandomStyle = () => {
+    return {
+      color: getRandomColor(),
+      transform: getRandomRotation(),
+      fontVariationSettings: '"wght" 354.078', 
+      transition: 'all 0.3s ease-out',
+      cursor: "pointer",
+    };
+  };
+
+  useEffect(() => {
+    if (isActive) {
+      setStyles(getRandomStyle());
+    } else {
+      setStyles({}); 
+    }
+  }, [isActive]);
+
+  const handleMouseEnter = () => {
+    setStyles(getRandomStyle());
+  };
+
+  const handleMouseLeave = () => {
+    setStyles({});
+  };
+
   return (
-    <div
+    <span
       className="animated-letter"
-      onMouseEnter={() => {
-        setHoverColor(getRandomColor());
-        setRotation(getRandomRotation());
-      }}
-      onMouseLeave={() => {
-        setHoverColor('');
-        setRotation('');
-      }}
       style={{
-        color: hoverColor,
-        transform: rotation,  
+        display: 'inline-block',
+        ...styles
       }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {item === " " ? "\u00A0" : item}
-    </div>
+    </span>
   );
 };
 
