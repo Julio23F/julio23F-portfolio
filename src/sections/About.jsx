@@ -32,6 +32,16 @@ const About = () => {
         calculateMonthsSinceApril2024();
     }, []);
 
+    const skills = [
+        { name: 'HTML5', icon: 'fa-html5' },
+        { name: 'CSS3', icon: 'fa-css3-alt' },
+        { name: 'JavaScript', icon: 'fa-js' },
+        { name: 'ReactJS', icon: 'fa-react' },
+        { name: 'PHP', icon: 'fa-brands fa-php' },
+        { name: 'Laravel', icon: 'fa-laravel' },
+        { name: 'Flutter', icon: 'fa-mobile' },
+      ];
+
     return (
         <section 
             id="about"
@@ -84,8 +94,23 @@ const About = () => {
                 <h2 className="description-title grid-item">../DESCRIPTION</h2>
                 <div className="description-stats grid-item">
                     <p className="description-text">
-                        MY NAME IS FARALAHY Julio, AND I'M A WEB AND MOBILE DEVELOPER AND CREATIVE VISUAL DESIGNER WHO CREATE INTERACTIVE APPLICATION FOR YOU.
+                    My name is "Faralahy Julio", and I'm a web and mobile developer, as well as a creative visual designer who creates interactive applications for you.
                     </p>
+                </div>
+
+                <h2 className="description-title grid-item">../SKILLS</h2>
+                <div className="description-stats grid-item">
+                    {/* <p className="description-text">
+                    My name is "Faralahy Julio", and I'm a web and mobile developer, as well as a creative visual designer who creates interactive applications for you.
+                    </p> */}
+                    <div className="skills-container">
+                        {skills.map((skill, index) => (
+                            <div key={index} className="skill-item">
+                            <i className={`fab ${skill.icon}`}></i>
+                            <span>{skill.name}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
