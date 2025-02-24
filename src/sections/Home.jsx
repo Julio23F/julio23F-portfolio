@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AnimatedSentence from "../components/AnimatedSentence";
 import SparklesCore from "../components/ui/SparklesCore";
 import About from "./About";
+import Projects from "./Projects";
 
 const Home = () => {
     return (
@@ -20,6 +21,8 @@ const Home = () => {
                     Download CV
                 </button>
                 <About />
+
+                <Projects />
 
             </main>
         </>

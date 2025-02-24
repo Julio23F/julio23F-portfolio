@@ -13,8 +13,9 @@ const AnimatedLetter = ({ item, index, activeIndex }) => {
   ];
 
   const rotations = [
-    'rotate(-20deg)', 'rotate(-10deg)', 'rotate(0deg)', 
-    'rotate(10deg)', 'rotate(20deg)'
+    'rotate(-20deg)', 
+    'rotate(0deg)', 
+    'rotate(20deg)',
   ];
 
   const getRandomColor = () => {
