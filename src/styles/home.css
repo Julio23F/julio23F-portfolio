@@ -7,12 +7,33 @@
 }
 
 
-.home-container > h1 > div:first-child {
+.home-container h1 > div:first-child {
     color: #ff7145 !important;
 }
 
-.home-container > h1 > div:nth-child(2) {
+.home-container h1 > div:nth-child(2) {
     color: white !important;
 }
+
+
+.top {
+  background: #141414;
+  border-radius: 0 0 50px 50px;
+  margin: 0 auto;
+  width: 100%; /* Garde la largeur complète */
+  display: flex;
+  justify-content: center;
+  overflow: hidden; /* Évite que les éléments débordent */
+
+  /* padding-bottom: 150px; */
+}
+
+.top > * {
+  flex-shrink: 0; /* Empêche les enfants d'être écrasés */
+}
+
+
+
+
 
 

@@ -40,7 +40,9 @@ const About = () => {
         { name: 'PHP', icon: 'fa-brands fa-php' },
         { name: 'Laravel', icon: 'fa-laravel' },
         { name: 'Flutter', icon: 'fa-mobile' },
-      ];
+        { name: 'Cypress', icon: 'fa-vial' }
+    ];
+    
 
     return (
         <section 
