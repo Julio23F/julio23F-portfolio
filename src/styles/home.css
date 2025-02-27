@@ -17,15 +17,18 @@
 
 
 .top {
-  background: #141414;
+  background: #090909;
   border-radius: 0 0 50px 50px;
   margin: 0 auto;
-  width: 100%; /* Garde la largeur complète */
+  width: 100%;
   display: flex;
   justify-content: center;
-  overflow: hidden; /* Évite que les éléments débordent */
+  overflow: hidden; 
+}
 
-  /* padding-bottom: 150px; */
+.middle {
+  background-color: #1c1c1c;
+  height: 75vh;
 }
 
 .top > * {

@@ -14,7 +14,9 @@ const AnimatedLetter = ({ item, index, activeIndex }) => {
 
   const rotations = [
     'rotate(-20deg)', 
-    'rotate(0deg)', 
+    'rotate(-10deg)', 
+    // 'rotate(0deg)', 
+    'rotate(10deg)',
     'rotate(20deg)',
   ];
 
@@ -29,10 +31,11 @@ const AnimatedLetter = ({ item, index, activeIndex }) => {
   const getRandomStyle = () => {
     return {
       color: getRandomColor(),
-      transform: getRandomRotation(),
-      fontVariationSettings: '"wght" 354.078', 
-      transition: 'all 0.3s ease-out',
+      transform: `${getRandomRotation()} scale(1.4)`, 
+      fontVariationSettings: '"wght" 354.078',
+      transition: 'transform 0.3s ease-out, color 0.3s ease-out',
       cursor: "pointer",
+      display: "inline-flex",
     };
   };
 
