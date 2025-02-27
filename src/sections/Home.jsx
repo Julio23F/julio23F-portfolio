@@ -29,13 +29,16 @@ const Home = () => {
         // Animation GSAP de la section .top
         gsap.to(".top", {
             borderRadius: "0 0 50px 50px",
-            scaleX: 0.95,
+            transform: "scale(0.92)",
             duration: 1,
             ease: "power2.inOut",
             scrollTrigger: {
+                markers: true,
                 scrub: 1.5,
                 trigger: ".top",
-                start: "80% 30%",
+                // start: "70% 10%",
+                // end: "95% top",
+                start: "50% 30%",
                 end: "bottom 30%",
             }
         });

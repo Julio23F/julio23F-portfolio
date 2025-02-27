@@ -36,6 +36,7 @@ const AnimatedLetter = ({ item, index, activeIndex }) => {
       transition: 'transform 0.3s ease-out, color 0.3s ease-out',
       cursor: "pointer",
       display: "inline-flex",
+      zIndex: "5",
     };
   };
 
