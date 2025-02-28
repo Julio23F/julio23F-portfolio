@@ -5,7 +5,7 @@ import AnimatedSentence from "../components/AnimatedSentence";
 import SparklesCore from "../components/ui/SparklesCore";
 import About from "./About";
 import Projects from "./Projects";
-import Lenis from "@studio-freight/lenis"; // Import de Lenis
+import Lenis from "@studio-freight/lenis"; 
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,12 +32,12 @@ const Home = () => {
             transform: "scale(0.92)",
             duration: 1,
             ease: "power2.inOut",
+            // Permet de faire un petit rebond et de revenir vers 15% de Y
+            yPercent: "-3",
             scrollTrigger: {
                 markers: true,
                 scrub: 1.5,
                 trigger: ".top",
-                // start: "70% 10%",
-                // end: "95% top",
                 start: "50% 30%",
                 end: "bottom 30%",
             }
