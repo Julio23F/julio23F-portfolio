@@ -47,7 +47,7 @@ const Projects = () => {
                     scrollTrigger: {
                         markers: true,
                         trigger: containerRef.current,
-                        start: `${index * 300}px center`,
+                        start: `${index * 340}px center`,
                         end: `+=200`,
                         scrub: 1.5,
                     },
@@ -65,7 +65,7 @@ const Projects = () => {
     };
 
     return (
-        <div className="relative min-h-[250vh] flex justify-center mt-[300px]">
+        <div className="relative min-h-[267vh] flex justify-center mt-[300px]">
             <div ref={containerRef} className="sticky top-[50%] translate-y-[-60%] card-project-container">
                 {projects.map((project, index) => (
                     <div
@@ -83,14 +83,14 @@ const Projects = () => {
                     }}
                 >
                     <img src={getImageUrl(project.name)} alt={project.name} />
-                    <div
+                    {/* <div
                       className="card-description"
                     >
                       <p style={{marginBottom: "40px"}}>{project.description} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste, nisi? Enim, perspiciatis quod iure eaque modi culpa voluptatum expedita quasi.</p>
                       <button className="custom-button" style={{ alignSelf: "flex-end", position: "absolute", right: "20px", bottom: "25px" }}>
                           Afficher le projet
                       </button>
-                    </div>
+                    </div> */}
                 </div>
                 ))}
             </div>

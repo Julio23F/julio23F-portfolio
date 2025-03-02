@@ -67,7 +67,18 @@
   backdrop-filter: blur(8rem);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+
+  opacity: 0;
+  transform: perspective(310px) translateY(10.5%) rotateX(-95deg);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
+
+.stat-item.visible {
+  opacity: 1;
+  transform: perspective(310px) translateY(0) rotateX(0);
+}
+
 
 .stat-item > div {
   height: 150px;
@@ -97,6 +108,7 @@
 
 .stat-text span{
   display: block;
+  letter-spacing: .08em;
 }
 
 .about-description {
@@ -114,14 +126,35 @@
 
 
 .description-title{
-  font-size: 0.8em;
+  font-size: 0.65em;
   color: #f8f7f499;
+  letter-spacing: .08em;
+
 }
 .description-text{
+  letter-spacing: .08em;
+
   font-size:  0.9em;
   color: #f8f7f4;
   text-indent: 2em;
   text-align: justify;
+
+  font-family: monospace;
+  text-transform: uppercase;
+  width: 450px;
+  height: 50px;
+  /* background-color: blue; */
+
+  opacity: 0;
+  transform: perspective(310px) translateY(10.5%) rotateX(-95deg);
+  transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+.description-text.visible {
+  /* background-color: red; */
+
+  opacity: 1;
+  transform: perspective(310px) translateY(0) rotateX(0);
 }
 .description-stats {
   width: 60%;
@@ -145,7 +178,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  padding: 10px 15px;
+  padding: 8px 15px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: linear-gradient(
       to bottom,
@@ -160,8 +193,18 @@
   backdrop-filter: blur(8rem);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
-  transition: background-color 0.3s ease;
+  /* transition: background-color 0.3s ease; */
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
+.skill-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .skill-item:hover {
   background: rgba(255, 255, 255, 0.15);
@@ -171,6 +214,13 @@
 
 .skill-item i {
   font-size: 24px;
+  color: #fff;
+
+  transition: color 0.3s ease;
+}
+
+.skill-item > span {
+  font-size: 12px;
   color: #fff;
 
   transition: color 0.3s ease;

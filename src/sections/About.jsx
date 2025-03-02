@@ -1,21 +1,97 @@
 import { useEffect, useState } from "react";
 
+
+const animateTextReveal = (realText, setDisplayedText) => {
+    const generateRandomWord = (length) => {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+    };
+
+    const generateRandomText = (text) => {
+        return text.split(/(\s+)/).map(segment => {
+            return segment.trim() ? generateRandomWord(segment.length) : segment;
+        }).join("");
+    };
+
+    let randomText = generateRandomText(realText);
+    setDisplayedText(randomText);
+
+    let indexes = Array.from({ length: realText.length }, (_, i) => i);
+    let step = Math.ceil(realText.length / 10);
+
+    const interval = setInterval(() => {
+        if (indexes.length === 0) {
+            clearInterval(interval);
+            return;
+        }
+
+        let selectedIndexes = indexes.sort(() => 0.5 - Math.random()).slice(0, step);
+        setDisplayedText((currentText) => {
+            let newText = currentText.split("");
+            selectedIndexes.forEach((i) => {
+                newText[i] = realText[i];
+            });
+            return newText.join("");
+        });
+
+        indexes = indexes.filter((i) => !selectedIndexes.includes(i));
+    }, 110);
+
+    return () => clearInterval(interval);
+};
+
 const About = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [monthsSinceApril2024, setMonthsSinceApril2024] = useState(0);
+    const [displayedText, setDisplayedText] = useState("");
+    const [displayedTextDescription, setDisplayedTextDescription] = useState("");
+    const [displayedTextSkill, setDisplayedTextSkill] = useState("");
+    const realText = `My name is "Faralahy Julio", and I'm a web and mobile developer, as well as a creative visual designer who creates interactive applications for you.`;
 
     useEffect(() => {
         const handleScroll = () => {
             const aboutSection = document.getElementById("about");
+            const skills = document.querySelectorAll(".skill-item");
+
             if (aboutSection) {
                 const rect = aboutSection.getBoundingClientRect();
                 setIsVisible(rect.top < window.innerHeight * 0.5);
             }
+
+            document.querySelectorAll(".stat-item").forEach((item) => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    item.classList.add("visible");
+                }
+            });
+            const descriptionText = document.querySelector(".description-text");
+            if (descriptionText) {
+                descriptionText.classList.add("visible");
+            }
+
+            skills.forEach((item, index) => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    setTimeout(() => {
+                        item.classList.add("visible");
+                    }, index * 150); // Décalage progressif pour chaque élément
+                }
+            });
         };
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    useEffect(() => {
+        if (!isVisible) return;
+
+        if (isVisible) {
+            animateTextReveal(realText, setDisplayedText);
+            animateTextReveal("DESCRIPTION", setDisplayedTextDescription);
+            animateTextReveal("SKILLS", setDisplayedTextSkill);
+        }
+    }, [isVisible]);
 
     useEffect(() => {
         const calculateMonthsSinceApril2024 = () => {
@@ -93,23 +169,20 @@ const About = () => {
                     </div>
                 </div>
             
-                <h2 className="description-title grid-item">../DESCRIPTION</h2>
+                <h2 className="description-title grid-item">../{displayedTextDescription}</h2>
                 <div className="description-stats grid-item">
-                    <p className="description-text">
-                    My name is "Faralahy Julio", and I'm a web and mobile developer, as well as a creative visual designer who creates interactive applications for you.
+                    <p className="description-text" >
+                        {displayedText}
                     </p>
                 </div>
 
-                <h2 className="description-title grid-item">../SKILLS</h2>
+                <h2 className="description-title grid-item">../{displayedTextSkill}</h2>
                 <div className="description-stats grid-item">
-                    {/* <p className="description-text">
-                    My name is "Faralahy Julio", and I'm a web and mobile developer, as well as a creative visual designer who creates interactive applications for you.
-                    </p> */}
                     <div className="skills-container">
                         {skills.map((skill, index) => (
                             <div key={index} className="skill-item">
-                            <i className={`fab ${skill.icon}`}></i>
-                            <span>{skill.name}</span>
+                                <i className={`fab ${skill.icon}`}></i>
+                                <span>{skill.name}</span>
                             </div>
                         ))}
                     </div>
