@@ -6,6 +6,7 @@ import SparklesCore from "../components/ui/SparklesCore";
 import About from "./About";
 import Projects from "./Projects";
 import Lenis from "@studio-freight/lenis"; 
+import AnimatedCursor from "../components/ui/AnimatedCursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,6 +52,7 @@ const Home = () => {
 
     return (
         <div style={{ backgroundColor: "#1c1c1c" }}>
+            {/* <AnimatedCursor/> */}
             <main className="home-container flex flex-col items-center justify-center text-center py-24 px-4">
                 <div className="absolute inset-0 w-full h-full z-0">
                     <SparklesCore background="black" />

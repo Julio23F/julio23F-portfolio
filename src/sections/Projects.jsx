@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
@@ -6,27 +6,33 @@ import Lenis from "@studio-freight/lenis";
 const Projects = () => {
     const baseLinkURL = "https://github.com/Julio23F/";
     const projects = [
-        { name: "youstudy", description: "Description du projet youstudy", link: "domestiK" },
-        { name: "msos", description: "Description du projet msos", link: "domestiK" },
-        { name: "myclasse", description: "Description du projet myclasse", link: "domestiK" },
+        { name: "youstudy", description: "Description du projet youstudy", link: "domestiK", backgroundColor: "#d2ccf2" },
+        { name: "msos", description: "Description du projet msos", link: "domestiK", backgroundColor: "#f5f5f5" },
+        { name: "myclasse", description: "Description du projet myclasse", link: "domestiK", backgroundColor: "#3e9998" },
         { name: "myclasse1", description: "Description du projet myclasse1", link: "domestiK" },
-        { name: "portfolio", description: "Description du projet portfolio", link: "domestiK" },
+        { name: "portfolio", description: "Description du projet portfolio", link: "domestiK", backgroundColor: "green" },
     ];
 
     const containerRef = useRef(null);
     const cardsRef = useRef([]);
+    const [activeIndex, setActiveIndex] = useState();
+    const [isVisible, setIsVisible] = useState(false);
+    
+    useEffect(() => {
+        const handleScroll = () => {
+            const projectSection = document.getElementById("projects");
+            if (projectSection) {
+                const rect = projectSection.getBoundingClientRect();
+                setIsVisible(rect.top < window.innerHeight * 0.5);
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-
-        // Activation de Lenis pour un scroll fluide
-        const lenis = new Lenis({
-            smooth: true,
-            lerp: 0.1, // Ajuste la fluidité
-            wheelMultiplier: 1,
-            infinite: false,
-        });
-
+        const lenis = new Lenis({ smooth: true, lerp: 0.1, wheelMultiplier: 1, infinite: false });
         function raf(time) {
             lenis.raf(time);
             requestAnimationFrame(raf);
@@ -34,25 +40,28 @@ const Projects = () => {
         requestAnimationFrame(raf);
 
         cardsRef.current.forEach((card, index) => {
-            gsap.fromTo(
-                card,
-                { y: 200, opacity: 0, zIndex: projects.length + index },
-                {
-                    y: index * 3,
-                    transform: "scale(1.1)",
-                    width: `${100 + index * 2}%`,
-                    marginLeft: `${-index}%`,
-                    opacity: 1,
-                    zIndex: projects.length + index,
-                    scrollTrigger: {
-                        markers: true,
-                        trigger: containerRef.current,
-                        start: `${index * 340}px center`,
-                        end: `+=200`,
-                        scrub: 1.5,
-                    },
-                }
-            );
+            ScrollTrigger.create({
+                markers: true,
+                trigger: card,
+                start: `${index * 280}px center`,
+                end: `+=200`,
+                onEnter: () => setActiveIndex(index + 1),
+                onEnterBack: () => setActiveIndex(index + 1),
+            });
+            gsap.fromTo(card, { y: 550, zIndex: projects.length + index }, {
+                y: index * 12,
+                transform: "scale(1.1)",
+                width: `${100 + index * 2}%`,
+                marginLeft: `${-index}%`,
+                zIndex: projects.length + index,
+                scrollTrigger: {
+                    markers: true,
+                    trigger: containerRef.current,
+                    start: `${index * 340}px center`,
+                    end: `+=200`,
+                    scrub: 1.5,
+                },
+            });
         });
 
         return () => {
@@ -60,41 +69,37 @@ const Projects = () => {
         };
     }, []);
 
-    const getImageUrl = (name) => {
-        return new URL(`../assets/realisations/${name.toLowerCase()}.PNG`, import.meta.url).href;
-    };
+    const getImageUrl = (name) => new URL(`../assets/realisations/${name.toLowerCase()}.PNG`, import.meta.url).href;
 
     return (
-        <div className="relative min-h-[267vh] flex justify-center mt-[300px]">
-            <div ref={containerRef} className="sticky top-[50%] translate-y-[-60%] card-project-container">
+        <section id="projects" className="relative min-h-[290vh] flex justify-center mt-[300px]">
+            <div ref={containerRef} className="sticky top-[50%] translate-y-[-40%] flex card-project-container">
                 {projects.map((project, index) => (
                     <div
-                    key={index}
-                    ref={(el) => (cardsRef.current[index] = el)}
-                    className="card-project absolute h-[350px] flex items-center justify-center text-white text-xl font-bold shadow-lg"
-                    style={{
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        border: "solid 1px rgba(226, 226, 226, 0.08)",
-                        opacity: 0.5,
-                        backgroundColor: "#2c2c2e",
-                        backdropFilter: "blur(50px)",
-                        zIndex: 500
-                    }}
-                >
-                    <img src={getImageUrl(project.name)} alt={project.name} />
-                    {/* <div
-                      className="card-description"
+                        key={index}
+                        ref={(el) => (cardsRef.current[index] = el)}
+                        className="card-project absolute  items-center justify-center text-white text-xl font-bold shadow-lg"
+                        style={{ background: `url(${getImageUrl(project.name)}) center/cover no-repeat`, zIndex: 500 }}
                     >
-                      <p style={{marginBottom: "40px"}}>{project.description} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste, nisi? Enim, perspiciatis quod iure eaque modi culpa voluptatum expedita quasi.</p>
-                      <button className="custom-button" style={{ alignSelf: "flex-end", position: "absolute", right: "20px", bottom: "25px" }}>
-                          Afficher le projet
-                      </button>
-                    </div> */}
-                </div>
+                         <div className="relative z-10 bg-[#07110F] text-white flex flex-col items-center justify-center py-5">
+                            <div className="flex gap-4 mb-4">
+                                {["UX/UI", "Dashboard", "Redesign"].map((tag, index) => (
+                                    <span key={index} className="px-4 py-1 border border-white/40 rounded-full text-sm font-medium tracking-wide relative">
+                                        {tag}
+                                        <span className="absolute inset-0 border border-dashed border-white/40 rounded-full"></span>
+                                    </span>
+                                ))}
+                            </div>
+                            <h1 className="text-[3rem] font-bold uppercase tracking-wide">TRACKPAC</h1>
+                        </div>
+                        <div className="absolute inset-0 backdrop-blur-[25px] bg-black/30 rounded-lg" />
+                        <div>
+                            <img src={getImageUrl(project.name)} alt={project.name} className="rounded-md" />
+                        </div>
+                    </div>
                 ))}
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -1,12 +1,40 @@
+@font-face {
+  font-family: "New Montreal";
+  src: url("./fonts/NewMontreal/woff/PPNeueMontrealMono-RegularItalic.woff2") format("woff2"),
+       url("./fonts/NewMontreal/woff/PPNeueMontrealMono-RegularItalic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+
+
 .card-project-container{
-  width: 40%;
-  height: 350px;
+  width: 80%;
+  height: 500px;
+  /* background-color: red; */
+  font-family: "New Montreal";
+}
+
+.numero {
+  margin-left: -180px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 5vw;
+  opacity: 0.3
 }
 
 .card-project {
   width: 100%;
+  height: 100%;
   border-radius: 10px;
+  transition: background-size 0.3s ease-in-out;
+  background-size: cover;
 }
+
+.card-project:hover {
+  background-size: 110%; /* Zoom léger */
+}
+
 
 .card-project:hover .card-description {
   border-radius: 0 0 10px 10px;
@@ -15,13 +43,12 @@
 }
 .card-project img {
   border-radius: 5px;
-  transform: scale(0.9);
+  transform: scale(0.8);
   transition: 0.27s ease-in-out;
-
 }
-.card-project:hover img {
+.card-project img:hover {
   color: #0909098a;
-  transform: scale(0.92);
+  transform: scale(0.82);
 }
 
 
