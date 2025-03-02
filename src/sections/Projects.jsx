@@ -7,28 +7,15 @@ const Projects = () => {
     const baseLinkURL = "https://github.com/Julio23F/";
     const projects = [
         { name: "youstudy", description: "Description du projet youstudy", link: "domestiK", backgroundColor: "#d2ccf2" },
-        { name: "msos", description: "Description du projet msos", link: "domestiK", backgroundColor: "#f5f5f5" },
+        { name: "msos", description: "Description du projet msos", link: "domestiK", backgroundColor: "#f06d72" },
         { name: "myclasse", description: "Description du projet myclasse", link: "domestiK", backgroundColor: "#3e9998" },
-        { name: "myclasse1", description: "Description du projet myclasse1", link: "domestiK" },
-        { name: "portfolio", description: "Description du projet portfolio", link: "domestiK", backgroundColor: "green" },
+        { name: "myclasse1", description: "Description du projet myclasse1", link: "domestiK", backgroundColor: "#072228" },
+        { name: "portfolio", description: "Description du projet portfolio", link: "domestiK", backgroundColor: "#0f0a26" },
     ];
 
     const containerRef = useRef(null);
     const cardsRef = useRef([]);
     const [activeIndex, setActiveIndex] = useState();
-    const [isVisible, setIsVisible] = useState(false);
-    
-    useEffect(() => {
-        const handleScroll = () => {
-            const projectSection = document.getElementById("projects");
-            if (projectSection) {
-                const rect = projectSection.getBoundingClientRect();
-                setIsVisible(rect.top < window.innerHeight * 0.5);
-            }
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -73,15 +60,17 @@ const Projects = () => {
 
     return (
         <section id="projects" className="relative min-h-[290vh] flex justify-center mt-[300px]">
-            <div ref={containerRef} className="sticky top-[50%] translate-y-[-40%] flex card-project-container">
+            <div ref={containerRef} className="sticky top-[50%] translate-y-[-25%] flex card-project-container">
                 {projects.map((project, index) => (
                     <div
                         key={index}
                         ref={(el) => (cardsRef.current[index] = el)}
-                        className="card-project absolute  items-center justify-center text-white text-xl font-bold shadow-lg"
-                        style={{ background: `url(${getImageUrl(project.name)}) center/cover no-repeat`, zIndex: 500 }}
+                        className="card-project z-10 absolute items-center justify-center text-white text-xl font-bold shadow-lg"
+                        style={{
+                            backgroundColor: project.backgroundColor
+                        }}
                     >
-                         <div className="relative z-10 bg-[#07110F] text-white flex flex-col items-center justify-center py-5">
+                        <div className="relative text-white flex flex-col items-center justify-center py-5">
                             <div className="flex gap-4 mb-4">
                                 {["UX/UI", "Dashboard", "Redesign"].map((tag, index) => (
                                     <span key={index} className="px-4 py-1 border border-white/40 rounded-full text-sm font-medium tracking-wide relative">
@@ -90,9 +79,8 @@ const Projects = () => {
                                     </span>
                                 ))}
                             </div>
-                            <h1 className="text-[3rem] font-bold uppercase tracking-wide">TRACKPAC</h1>
+                            <h1 className="text-[3rem] font-bold uppercase tracking-wide">{project.name}</h1>
                         </div>
-                        <div className="absolute inset-0 backdrop-blur-[25px] bg-black/30 rounded-lg" />
                         <div>
                             <img src={getImageUrl(project.name)} alt={project.name} className="rounded-md" />
                         </div>
