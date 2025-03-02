@@ -35,6 +35,9 @@
   background-size: 110%; /* Zoom léger */
 }
 
+.card-project-header {
+  font-family: "New Montreal";
+}
 
 .card-project:hover .card-description {
   border-radius: 0 0 10px 10px;

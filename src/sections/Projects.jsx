@@ -6,11 +6,21 @@ import Lenis from "@studio-freight/lenis";
 const Projects = () => {
     const baseLinkURL = "https://github.com/Julio23F/";
     const projects = [
-        { name: "youstudy", description: "Description du projet youstudy", link: "domestiK", backgroundColor: "#d2ccf2" },
-        { name: "msos", description: "Description du projet msos", link: "domestiK", backgroundColor: "#f06d72" },
-        { name: "myclasse", description: "Description du projet myclasse", link: "domestiK", backgroundColor: "#3e9998" },
-        { name: "myclasse1", description: "Description du projet myclasse1", link: "domestiK", backgroundColor: "#072228" },
-        { name: "portfolio", description: "Description du projet portfolio", link: "domestiK", backgroundColor: "#0f0a26" },
+        { name: "youstudy", description: "Description du projet youstudy", link: "domestiK", backgroundColor: "#d2ccf2",
+            tags: ["UX/UI", "Web", "Redesign"]
+        },
+        { name: "msos", description: "Description du projet msos", link: "domestiK", backgroundColor: "#f06d72",
+            tags: ["UX/UI", "Web", "Redesign"]
+        },
+        { name: "myclasse", description: "Description du projet myclasse", link: "domestiK", backgroundColor: "#3e9998",
+            tags: ["UX/UI", "Web", "Redesign"]
+        },
+        { name: "myclasse1", description: "Description du projet myclasse1", link: "domestiK", backgroundColor: "#072228",
+            tags: ["UX/UI", "Web", "Redesign"]
+        },
+        { name: "portfolio", description: "Description du projet portfolio", link: "domestiK", backgroundColor: "#0f0a26",
+            tags: ["UX/UI", "Web", "Redesign"]
+        },
     ];
 
     const containerRef = useRef(null);
@@ -70,9 +80,9 @@ const Projects = () => {
                             backgroundColor: project.backgroundColor
                         }}
                     >
-                        <div className="relative text-white flex flex-col items-center justify-center py-5">
+                        <div className="card-project-header relative text-white flex flex-col items-center justify-center py-5">
                             <div className="flex gap-4 mb-4">
-                                {["UX/UI", "Dashboard", "Redesign"].map((tag, index) => (
+                                {project.tags.map((tag, index) => (
                                     <span key={index} className="px-4 py-1 border border-white/40 rounded-full text-sm font-medium tracking-wide relative">
                                         {tag}
                                         <span className="absolute inset-0 border border-dashed border-white/40 rounded-full"></span>
