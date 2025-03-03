@@ -45,7 +45,7 @@ const Home = () => {
         });
 
         return () => {
-            lenis.destroy(); // Nettoyage du scroll lors du démontage du composant
+            lenis.destroy();
         };
 
     }, []);
