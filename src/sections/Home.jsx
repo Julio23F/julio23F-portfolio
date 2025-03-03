@@ -6,7 +6,7 @@ import SparklesCore from "../components/ui/SparklesCore";
 import About from "./About";
 import Projects from "./Projects";
 import Lenis from "@studio-freight/lenis"; 
-import AnimatedCursor from "../components/ui/AnimatedCursor";
+import InfoContact from "./InfoContact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +36,7 @@ const Home = () => {
             // Permet de faire un petit rebond et de revenir vers 15% de Y
             yPercent: "-3",
             scrollTrigger: {
-                markers: true,
+                // markers: true,
                 scrub: 1.5,
                 trigger: ".top",
                 start: "50% 30%",
@@ -71,6 +71,7 @@ const Home = () => {
             <div className="section middle">
                 <Projects />
             </div>
+            <InfoContact />
         </div>
     );
 };

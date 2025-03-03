@@ -4,6 +4,7 @@ import './styles/index.css';
 import './styles/home.css';
 import './styles/about.css';
 import './styles/projects.css';
+import './styles/infoContact.css';
 import './styles/animatedCursor.css';
 import './index.css';
 import './styles/animatedLetter.css';

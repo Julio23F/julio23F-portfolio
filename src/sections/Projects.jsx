@@ -38,7 +38,7 @@ const Projects = () => {
 
         cardsRef.current.forEach((card, index) => {
             ScrollTrigger.create({
-                markers: true,
+                // markers: true,
                 trigger: card,
                 start: `${index * 280}px center`,
                 end: `+=200`,
@@ -52,7 +52,7 @@ const Projects = () => {
                 marginLeft: `${-index}%`,
                 zIndex: projects.length + index,
                 scrollTrigger: {
-                    markers: true,
+                    // markers: true,
                     trigger: containerRef.current,
                     start: `${index * 340}px center`,
                     end: `+=200`,
