@@ -87,8 +87,9 @@ const InfoContact = () => {
                         <div className="info-description">
                             <span className="badge">aim ✶ <span className="highlight">Testimonials</span></span>
                             <p className="description">
-                                Our clients speak louder than pixels! Check out what they have to say 
-                                about their experience working with us – real stories, real satisfaction.
+                                {/* Our clients speak louder than pixels! Check out what they have to say 
+                                about their experience working with us – real stories, real satisfaction. */}
+                                Créer, c'est donner vie à l'invisible. Chaque idée devient une réalité qui évolue, interagit et marque les esprits – simple, mais marquant.
                             </p>
                         </div>
                         <p className="testimonial">
@@ -116,7 +117,7 @@ const InfoContact = () => {
                         </p>
                         <div className="profiles">
                             <div className="profile">
-                                <img src={getImageUrl("pdp")} alt="Shahin Azimov" className="avatar"/>
+                                <img src={getImageUrl("pdp")} alt="pdp" className="avatar"/>
                                 <p className="name"><span className="green">Shahin</span> Azimov</p>
                             </div>
                         </div>
