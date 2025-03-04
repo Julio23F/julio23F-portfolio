@@ -9,6 +9,14 @@ const InfoContact = () => {
     const containerRef = useRef(null);
     const collaborationRef = useRef(null);
 
+    const contactList = [
+        { name: '+261 45 018 01', icon: 'fas fa-phone', link: 'tel:+2614501801' },
+        // { name: 'GitHub', icon: 'fab fa-github', link: 'https://github.com/Julio23F' },
+        { name: 'LinkedIn', icon: 'fab fa-linkedin', link: 'https://www.linkedin.com/in/julio-faralahy/' },
+        { name: 'juliofaralahy23@gmail.com', icon: 'fas fa-envelope', link: 'mailto:juliofaralahy23@gmail.com' }
+    ];
+    
+
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -21,10 +29,11 @@ const InfoContact = () => {
         requestAnimationFrame(raf);
 
         gsap.fromTo(
-            ".contact-section",
-            { },
+            ".info-contact-container",
+            {opacity: 1, },
             {
-                // opacity: 1,
+                transform: "scale(0.8)",
+                opacity: 0,
                 scrollTrigger: {
                     markers: true,
                     trigger: containerRef.current,
@@ -40,9 +49,9 @@ const InfoContact = () => {
 
         gsap.fromTo(
             ".info-contact",
-            { backgroundColor: "#1f1634" },
+            { backgroundColor: "#000"},
             {
-                // backgroundColor: "red",
+                backgroundColor: "#1f1634",
                 scrollTrigger: {
                     markers: true,
                     trigger: containerRef.current,
@@ -56,14 +65,15 @@ const InfoContact = () => {
         // Animation de "collaboration-container" lorsqu'on atteint "info-contact"
         gsap.fromTo(
             ".collaboration-container",
-            { y: 550, position: "absolute", gap: "100px", padding: "40px 0px",  },
+            { y: 550, position: "absolute", gap: "100px", padding: "40px 0px" },
             {
                 y: 50,
                 gap: "10px",
                 padding: "40px 40px",
+                backgroundColor: "#1f1634",
+                opacity: 1,
                 scrollTrigger: {
                     // markers: true,
-
                     trigger: containerRef.current,
                     start: "center center",
                     end: "bottom top",
@@ -79,13 +89,14 @@ const InfoContact = () => {
     }, []);
 
     return (
-        <div className="contact-section relative min-h-[200vh] flex justify-center mt-[300px]">
-            <div ref={containerRef} className="sticky top-[50%] translate-y-[-40%] flex contact-section-container">
+    <>
+        <div className="contact-section relative min-h-[180vh] flex justify-center mt-[300px]" style={{ backgroundColor: "#1f1634"}}>
+            <div ref={containerRef} className="sticky top-[10%] translate-y-[-10%] flex contact-section-container">
                 {/* Info Contact */}
-                <div className="info-contact">
+                <div className="info-contact"  style={{paddingTop: "90px"}}>
                     <div className="info-contact-container">
                         <div className="info-description">
-                            <span className="badge">aim ✶ <span className="highlight">Testimonials</span></span>
+                            <span className="badge">web ✶ <span className="highlight">Developer</span></span>
                             <p className="description">
                                 {/* Our clients speak louder than pixels! Check out what they have to say 
                                 about their experience working with us – real stories, real satisfaction. */}
@@ -104,27 +115,46 @@ const InfoContact = () => {
                     <div className="collaboration-box" style={{position: "relative"}}>
                         <h1 className="title">LET'S COLLABORATE</h1>
                         <p className="subtitle">
-                            Let's craft a standout web experience together – your success is our aim.
+                            Envie de discuter d'un projet ou juste de dire bonjour ? Mon inbox est toujours ouverte.
                         </p>
-                        <button className="cta-button" style={{position:"absolute", bottom: "75px"}}>
-                            <i className={`fab fa-github icon`}></i>Github
-                        </button>
+                        <a href="https://github.com/Julio23F" target="_blank" rel="noopener noreferrer">
+                            <button className="cta-button" style={{ position: "absolute", bottom: "75px" }}>
+                                <i className="fab fa-github icon"></i> Github
+                            </button>
+                        </a>
+
                     </div>
                     
                     <div className="contact-box">
-                        <p className="contact-text">
-                            Catch us on <a href="#">LinkedIn</a>, where every message gets a personal response.
-                        </p>
+                        <p className="contact-name"><span className="green">FARALAHY</span> Julio</p>
+
                         <div className="profiles">
                             <div className="profile">
                                 <img src={getImageUrl("pdp")} alt="pdp" className="avatar"/>
-                                <p className="name"><span className="green">Shahin</span> Azimov</p>
                             </div>
                         </div>
+                        <div className="contact-container">
+                            {contactList.map((contact, index) => (
+                                <a key={index} href={contact.link} target="_blank" rel="noopener noreferrer" className="contact-item">
+                                    <i className={`${contact.icon}`}></i>
+                                    <span>{contact.name}</span>
+                                </a>
+                            ))}
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
+        <div class="footer-container">
+            <span class="email">juliofaralahy23@gmail.com</span>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Dribbble</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </>
     );
 };
 

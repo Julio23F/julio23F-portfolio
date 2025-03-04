@@ -52,6 +52,7 @@ const Home = () => {
 
     return (
         <div style={{ backgroundColor: "#1c1c1c" }}>
+        {/* <div style={{ backgroundColor: "red" }}> */}
             {/* <AnimatedCursor/> */}
             <main className="home-container flex flex-col items-center justify-center text-center py-24 px-4">
                 <div className="absolute inset-0 w-full h-full z-0">
