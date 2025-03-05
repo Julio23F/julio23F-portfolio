@@ -44,6 +44,8 @@ const Home = () => {
                 // markers: true, 
             }
         });
+
+        // Afficher top-nav à la fin de ABOUT
         gsap.fromTo(".top-nav", 
             { opacity: 0},
             {
@@ -57,9 +59,28 @@ const Home = () => {
                     trigger: ".top-nav",  
                     start: "50% 15%", 
                     end: "bottom 30%",
-                    markers: true, 
+                    // markers: true, 
                 }
         });
+
+        // Afficher top-nav juste avant InfoContact
+        // gsap.fromTo(".top-nav", 
+        //     { opacity: 0 },
+        //     {
+        //         opacity: 1,
+        //         // duration: 1, 
+        //         // ease: "power2.inOut",
+        //         yPercent: "-3",
+        //         scrollTrigger: {
+        //             scrub: 1.5, 
+        //             trigger: ".info-contact", 
+        //             toggleActions: "none none none none",
+        //             start: "15% 50%",
+        //             end: "35% 70%",
+        //             markers: true,
+        //         }
+        //     }
+        // );
 
         return () => {
             lenis.destroy();
@@ -83,7 +104,7 @@ const Home = () => {
                     Download CV
                 </button>
             </main>
-            <div className="section top  sticky top-[-150%]" style={{display: "block"}}>
+            <div className="section top  sticky top-[-152%]" style={{display: "block"}}>
                 <About />
                 <div className="top-nav">
                     <Navbar/>
