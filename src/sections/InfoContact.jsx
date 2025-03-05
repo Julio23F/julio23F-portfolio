@@ -93,7 +93,7 @@ const InfoContact = () => {
         <div id="infoContact" className="contact-section relative min-h-[180vh] flex justify-center mt-[300px]" style={{ backgroundColor: "#1f1634"}}>
             <div ref={containerRef} className="sticky top-[10%] translate-y-[-10%] flex contact-section-container">
                 {/* Info Contact */}
-                <div className="info-contact"  style={{paddingTop: "90px"}}>
+                <div className="info-contact"  style={{paddingTop: "90px", width: "100%"}}>
                     <div className="info-contact-container">
                         <div className="info-description">
                             <span className="badge">web ✶ <span className="highlight">Developer</span></span>

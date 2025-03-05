@@ -1,0 +1,36 @@
+.nav-link {
+    position: relative;
+    padding-bottom: 4px;
+    padding: 0 20px;
+    transition: color 0.3s ease-out;
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 0%;
+    height: 2px;
+    background: #ff7145;
+    transition: all 0.3s ease-out;
+    transform: translateX(-50%);
+  }
+  
+  .nav-link:hover {
+    color: #ff7145;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* 🌟 Style pour l'élément actif */
+  .nav-link.active {
+    color: #ff7145; /* Change la couleur du texte */
+  }
+  
+  .nav-link.active::after {
+    width: 100%; /* Barre active */
+  }
+  
