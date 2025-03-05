@@ -1,8 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./sections/Home";
-import { twMerge } from 'tailwind-merge';
-
 
 
 const App = () => {

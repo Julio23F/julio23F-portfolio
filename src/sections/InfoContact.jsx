@@ -35,7 +35,7 @@ const InfoContact = () => {
                 transform: "scale(0.8)",
                 opacity: 0,
                 scrollTrigger: {
-                    markers: true,
+                    // markers: true,
                     trigger: containerRef.current,
                     start: "75% center",
                     end: "bottom top",
@@ -53,7 +53,7 @@ const InfoContact = () => {
             {
                 backgroundColor: "#1f1634",
                 scrollTrigger: {
-                    markers: true,
+                    // markers: true,
                     trigger: containerRef.current,
                     start: "center center",
                     end: "bottom top",
