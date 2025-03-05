@@ -31,8 +31,9 @@
     
     .description {
         font-size: 1.7em;
-        max-width: 530px;
+        max-width: 600px;
         font-family: sans-serif;
+        text-align: left;
     }
     
     
