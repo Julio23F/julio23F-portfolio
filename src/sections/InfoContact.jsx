@@ -149,9 +149,9 @@ const InfoContact = () => {
         <div class="footer-container">
             <span class="email">juliofaralahy23@gmail.com</span>
             <div class="social-links">
-                <a href="#">LinkedIn</a>
-                <a href="#">Dribbble</a>
-                <a href="#">Instagram</a>
+                <a href="https://www.linkedin.com/in/julio-faralahy/" target="_blank">LinkedIn</a>
+                <a href="https://www.facebook.com/julio.faralahy.5" target="_blank">Facebook</a>
+                <a href="https://github.com/Julio23F" target="_blank">Github</a>
             </div>
         </div>
     </>

@@ -35,7 +35,7 @@ const AnimatedSentence = ({text}) => {
                     }
                     return prevIndex + 1;
                 });
-            }, 230);
+            }, 300);
         } else {
             const waitTimeout = setTimeout(() => {
                 setIsWaiting(false);

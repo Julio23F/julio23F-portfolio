@@ -6,10 +6,10 @@ const AnimatedLetter = ({ item, index, activeIndex }) => {
 
   // Liste des couleurs possibles
   const colors = [
-    '#FFB6C1', // Rose pâle
-    '#FF9A8B', // Orange clair
-    '#98FB98', // Vert menthe
-    '#F9E79F'  // Jaune doux
+    '#FFB6C1', // Rose
+    '#FF9A8B', // Orange 
+    '#c1ed42', // Vert 
+    '#F9E79F'  // Jaune 
   ];
 
   const rotations = [
@@ -31,8 +31,8 @@ const AnimatedLetter = ({ item, index, activeIndex }) => {
   const getRandomStyle = () => {
     return {
       color: getRandomColor(),
-      transform: `${getRandomRotation()} scale(1.4)`, 
-      fontVariationSettings: '"wght" 354.078',
+      transform: `${getRandomRotation()} scale(1.5)`, 
+      fontVariationSettings: '"wght" 1',
       transition: 'transform 0.3s ease-out, color 0.3s ease-out',
       cursor: "pointer",
       display: "inline-flex",

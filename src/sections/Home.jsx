@@ -9,7 +9,8 @@ import Lenis from "@studio-freight/lenis";
 import InfoContact from "./InfoContact";
 import Experiences from "./Experiences";
 import Navbar from "../components/Navbar";
-
+import AnimatedButton from "../components/AnimatedButton"
+import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -63,6 +64,23 @@ const Home = () => {
                 }
         });
 
+        // Faire scroller top-nav juste avant InfoContact
+        gsap.fromTo(".top", 
+            { opacity: 1},
+            {
+                opacity: 0,
+                transform: "scale(0.95)",  
+                duration: 1, 
+                ease: "power2.inOut",
+                scrollTrigger: {
+                    scrub: 1.5, 
+                    trigger: ".info-contact", 
+                    toggleActions: "none none none none",
+                    start: "23% 35%",
+                    end: "35% 55%",
+                    // markers: true,
+                }
+        });
         // Afficher top-nav juste avant InfoContact
         // gsap.fromTo(".top-nav", 
         //     { opacity: 0 },
@@ -82,6 +100,8 @@ const Home = () => {
         //     }
         // );
 
+        
+
         return () => {
             lenis.destroy();
         };
@@ -100,17 +120,15 @@ const Home = () => {
                 <p className="mt-4 text-lg text-gray-300">
                     <span className="text-white">Transforming ideas into realities and visions into achievements</span> — I’m your man
                 </p>
-                <button className="mt-8 bg-green-500 text-black font-bold px-6 py-3 rounded-full hover:bg-green-600 hover:border-none focus:outline-none">
-                    Download CV
-                </button>
+                <AnimatedButton content="Download CV"/>
             </main>
-            <div className="section top  sticky top-[-152%]" style={{display: "block"}}>
+            <div className="section top  sticky top-[-152%]" style={{display: "block", zIndex: 10}}>
                 <About />
                 <div className="top-nav">
                     <Navbar/>
                 </div>
             </div>
-            <div className="section middle">
+            <div className="section middle" style={{zIndex: 0}}>
                 <Projects />
             </div>
             {/* <Experiences /> */}
