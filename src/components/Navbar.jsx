@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollToPlugin, ScrollTrigger } from "gsap/all";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const sections = ["#about", "#projects", "#infoContact"];
-    // Pour l'effet selectionner l'item du nav correspondant
+
     sections.forEach((section) => {
       ScrollTrigger.create({
         trigger: section,
@@ -23,11 +26,11 @@ const Navbar = () => {
 
   const handleClick = (e, target) => {
     e.preventDefault();
+    setIsOpen(false); // Ferme le menu après un clic
 
     const targetElement = document.querySelector(target);
     if (targetElement) {
-      // Décalage pour éviter les conflits avec ScrollTrigger
-      const offset = -300; 
+      const offset = -300;
       const targetPosition = targetElement.offsetTop - offset;
 
       gsap.to(window, {
@@ -39,28 +42,75 @@ const Navbar = () => {
   };
 
   return (
-    <header className="relative flex items-center p-4" style={{ zIndex: 5 }}>
+    <header className="relative flex items-center justify-between p-4 bg-black text-white" style={{ zIndex: 5 }}>
       <div className="text-xl font-bold tracking-wide">JULIO²³ᶠ</div>
-      <div className="absolute left-1/2 transform -translate-x-1/2">
-        <nav>
-          {["#about", "#projects", "#infoContact"].map((section, index) => (
-            <a
-              key={index}
-              href={section}
-              className={`text-gray-300 hover:text-white nav-link ${
-                activeSection === section ? "active" : ""
-              }`}
-              onClick={(e) => handleClick(e, section)}
-            >
-              {section === "#about"
-                ? "À propos"
-                : section === "#projects"
-                ? "Réalisations"
-                : "Contact"}
-            </a>
-          ))}
-        </nav>
-      </div>
+
+      {/* Icône burger pour mobile */}
+      <button
+        className="lg:hidden text-white focus:outline-none focus:ring-0 hover:border-transparent z-50"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? <X size={30} /> : <Menu size={30} />}
+      </button>
+
+      {/* Fond semi-transparent */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)} // Ferme le menu en cliquant à l'extérieur
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Navigation principale (toujours visible sur grand écran) */}
+      <nav className="hidden lg:flex space-x-6">
+        {["#about", "#projects", "#infoContact"].map((section, index) => (
+          <a
+            key={index}
+            href={section}
+            className={`nav-link ${activeSection === section ? "active" : ""}`}
+            onClick={(e) => handleClick(e, section)}
+          >
+            {section === "#about"
+              ? "À propos"
+              : section === "#projects"
+              ? "Réalisations"
+              : "Contact"}
+          </a>
+        ))}
+      </nav>
+
+      {/* Navigation mobile */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            className="absolute top-16 left-0 w-full bg-black flex flex-col items-center py-6 space-y-4 z-50 lg:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            {["#about", "#projects", "#infoContact"].map((section, index) => (
+              <a
+                key={index}
+                href={section}
+                className={`nav-link ${activeSection === section ? "active" : ""}`}
+                onClick={(e) => handleClick(e, section)}
+              >
+                {section === "#about"
+                  ? "À propos"
+                  : section === "#projects"
+                  ? "Réalisations"
+                  : "Contact"}
+              </a>
+            ))}
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
