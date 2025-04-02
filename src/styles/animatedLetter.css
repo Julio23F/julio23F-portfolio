@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 .animated-letter{
     position: relative;
     display: inline-block;
@@ -14,7 +14,8 @@
     z-index: 3;
     line-height: 0.9;
     transition: transform 0.25s ease, color 0.25s ease, font-variation-settings 0.25s ease;
-    font-family: 'Recursive', sans-serif;
+    /* font-family: 'Recursive', sans-serif; */
+    font-family: "Inter", Arial, sans-serif;
     font-size: 2em;
     font-variation-settings: 'wght' 1;
     margin: none;
@@ -23,7 +24,7 @@
 
 .animated-letter:hover{
     cursor: pointer;
-    /* transform: translate3d(0px, 0px, 0px) rotate(-0.445deg) scale(1.2014, 1.2014); */
-    /* font-variation-settings: "wght" 400; */
+    transform: translate3d(0px, 0px, 0px) rotate(-0.445deg) scale(1.2014, 1.2014);
+    font-variation-settings: "wght" 400;
 }
 
