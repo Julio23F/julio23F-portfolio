@@ -81,26 +81,6 @@ const Home = () => {
                     // markers: true,
                 }
         });
-        // Afficher top-nav juste avant InfoContact
-        // gsap.fromTo(".top-nav", 
-        //     { opacity: 0 },
-        //     {
-        //         opacity: 1,
-        //         // duration: 1, 
-        //         // ease: "power2.inOut",
-        //         yPercent: "-3",
-        //         scrollTrigger: {
-        //             scrub: 1.5, 
-        //             trigger: ".info-contact", 
-        //             toggleActions: "none none none none",
-        //             start: "15% 50%",
-        //             end: "35% 70%",
-        //             markers: true,
-        //         }
-        //     }
-        // );
-
-        
 
         return () => {
             lenis.destroy();

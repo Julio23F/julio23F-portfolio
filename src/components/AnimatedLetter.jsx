@@ -32,7 +32,7 @@ const AnimatedLetter = ({ item, index, activeIndex }) => {
     return {
       color: getRandomColor(),
       transform: `${getRandomRotation()} scale(1.5)`, 
-      fontVariationSettings: '"wght" 1',
+      fontVariationSettings: '"wght" 400',
       transition: 'transform 0.3s ease-out, color 0.3s ease-out',
       cursor: "pointer",
       display: "inline-flex",
