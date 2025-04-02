@@ -23,7 +23,7 @@
 
 .animated-letter:hover{
     cursor: pointer;
-    transform: translate3d(0px, 0px, 0px) rotate(-0.445deg) scale(1.2014, 1.2014);
-    font-variation-settings: "wght" 400;
+    /* transform: translate3d(0px, 0px, 0px) rotate(-0.445deg) scale(1.2014, 1.2014); */
+    /* font-variation-settings: "wght" 400; */
 }
 
